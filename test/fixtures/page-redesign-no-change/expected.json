@@ -1,0 +1,9 @@
+{
+  "sourceId": "capitalone-venture",
+  "selector": ".venture-bonus",
+  "description": "§11 case 3 — full page redesign (new markup, reworded copy, 'New!' marketing language, a different card's promo in the nav) with no actual offer change. All structured fields identical → NO_CHANGE. Proves keywords never gate classification and nav noise stays outside the scoped region.",
+  "expected": {
+    "classification": "NO_CHANGE",
+    "changedFields": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "sourceId": "amex-gold",
+  "selector": "[data-testid=\"offer-copy\"]",
+  "description": "§11 case 2 — spend-requirement-only change ($6,000 → $8,000), identical bonus amount (the Amex Gold pattern). Must flag exactly the same way a bonus-amount change does.",
+  "expected": {
+    "classification": "CHANGED",
+    "changedFields": ["spendRequirement"],
+    "previous": { "spendRequirement": 6000 },
+    "current": { "spendRequirement": 8000 }
+  }
+}

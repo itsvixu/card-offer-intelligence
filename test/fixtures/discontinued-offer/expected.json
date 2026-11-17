@@ -1,0 +1,10 @@
+{
+  "sourceId": "citi-custom-cash",
+  "selector": ".offer-banner",
+  "description": "§11 case 4 — discontinued offer (the Citi Custom Cash pattern). The offer region still exists and matches the selector, but no parsable offer remains in it → DISCONTINUED, not NEEDS_REVIEW.",
+  "expected": {
+    "classification": "DISCONTINUED",
+    "changedFields": [],
+    "previous": { "bonusAmount": 200, "spendRequirement": 1500, "annualFee": 0 }
+  }
+}

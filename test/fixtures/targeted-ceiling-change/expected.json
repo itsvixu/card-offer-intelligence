@@ -1,0 +1,14 @@
+{
+  "sourceId": "ba-amex-premium-plus",
+  "selector": ".offer-copy",
+  "description": "§11 case 5 — personalized/targeted offer with a ceiling value ('up to 60,000 → up to 100,000 Avios'), GBP market. Stored as bonusAmountMax with isTargeted, and the max diffs the same way a fixed bonus does (§5.2). Also exercises non-USD currency handling (§10).",
+  "expected": {
+    "classification": "CHANGED",
+    "changedFields": ["bonusAmountMax"],
+    "previous": { "bonusAmountMax": 60000 },
+    "current": { "bonusAmountMax": 100000 },
+    "parsedOfferChecks": {
+      "current": { "isTargeted": true, "bonusUnit": "avios", "spendCurrency": "GBP", "spendRequirement": 5000, "annualFee": 300 }
+    }
+  }
+}

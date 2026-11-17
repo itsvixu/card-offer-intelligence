@@ -1,0 +1,87 @@
+name: card-offer-scan
+
+# Twice a week, unattended (§8). "Run workflow" on the Actions tab triggers a
+# scan by hand — do that once after setup before relying on the schedule.
+on:
+  schedule:
+    - cron: '0 8 * * 1,4' # Monday and Thursday, 08:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # to commit the updated store back
+  pages: write    # to publish the dashboard
+  id-token: write
+
+# Never let two scans race on the store.
+concurrency:
+  group: card-offer-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    timeout-minutes: 30
+    env:
+      # Read by the email step's condition; a step's own env is not visible to its `if`.
+      SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install headless Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Scan
+        run: node run-scan.js
+        env:
+          # Optional: lets an unreadable offer get a second reading from Claude
+          # before it is sent to "Needs a look". Scans work without it.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit the store and new screenshots
+        run: |
+          git config user.name "card-offer-scan"
+          git config user.email "actions@github.com"
+          git add data/snapshots.sqlite data/captures
+          git commit -m "Scan $(date -u +%Y-%m-%dT%H:%MZ)" || echo "Nothing new to commit"
+          git push
+
+      # Email is optional: the step is skipped until the SMTP secrets exist.
+      - name: Email the run report
+        if: ${{ always() && env.SMTP_SERVER != '' }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: Card offer scan
+          to: ${{ secrets.REPORT_EMAIL_TO }}
+          from: Card Offer Intelligence
+          body: file://output/run-report.md
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: run-report
+          path: output/
+
+      # Publish the updated dashboard. (A push made with this workflow's token
+      # does not trigger publish-site.yml, so it is done here.)
+      - name: Build the site
+        run: node scripts/build-site.js
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4

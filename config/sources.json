@@ -1,0 +1,142 @@
+[
+  {
+    "sourceId": "chase-sapphire-preferred",
+    "issuer": "Chase",
+    "product": "Sapphire Preferred",
+    "market": "us",
+    "network": "Visa",
+    "category": "Travel",
+    "url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "chase-sapphire-reserve",
+    "issuer": "Chase",
+    "product": "Sapphire Reserve",
+    "market": "us",
+    "network": "Visa",
+    "category": "Premium travel",
+    "url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "chase-freedom-unlimited",
+    "issuer": "Chase",
+    "product": "Freedom Unlimited",
+    "market": "us",
+    "network": "Visa",
+    "category": "Cash back",
+    "url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "amex-gold",
+    "issuer": "American Express",
+    "product": "Gold Card",
+    "market": "us",
+    "network": "American Express",
+    "category": "Dining",
+    "url": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "amex-platinum",
+    "issuer": "American Express",
+    "product": "Platinum Card",
+    "market": "us",
+    "network": "American Express",
+    "category": "Premium travel",
+    "url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "capitalone-venture",
+    "issuer": "Capital One",
+    "product": "Venture Rewards",
+    "market": "us",
+    "network": "Visa",
+    "category": "Travel",
+    "url": "https://www.capitalone.com/credit-cards/venture/",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "capitalone-venture-x",
+    "issuer": "Capital One",
+    "product": "Venture X",
+    "market": "us",
+    "network": "Visa",
+    "category": "Premium travel",
+    "url": "https://www.capitalone.com/credit-cards/venture-x/",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "citi-strata-premier",
+    "issuer": "Citi",
+    "product": "Strata Premier",
+    "market": "us",
+    "network": "Mastercard",
+    "category": "Travel",
+    "url": "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "discover-it-cash-back",
+    "issuer": "Discover",
+    "product": "it Cash Back",
+    "market": "us",
+    "network": "Discover",
+    "category": "Cash back",
+    "url": "https://www.discover.com/credit-cards/cash-back/it-card.html",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "wellsfargo-active-cash",
+    "issuer": "Wells Fargo",
+    "product": "Active Cash",
+    "market": "us",
+    "network": "Visa",
+    "category": "Cash back",
+    "url": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "barclaycard-avios-plus",
+    "issuer": "Barclaycard",
+    "product": "Avios Plus",
+    "market": "uk",
+    "network": "Mastercard",
+    "category": "Travel",
+    "url": "https://www.barclaycard.co.uk/personal/credit-cards/avios-plus",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "amex-uk-ba-premium-plus",
+    "issuer": "American Express",
+    "product": "British Airways Premium Plus",
+    "market": "uk",
+    "network": "American Express",
+    "category": "Travel",
+    "url": "https://www.americanexpress.com/en-gb/credit-cards/ba-premium-plus-credit-card/",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "barclaycard-avios",
+    "issuer": "Barclaycard",
+    "product": "Avios",
+    "market": "uk",
+    "network": "Mastercard",
+    "category": "Travel",
+    "url": "https://www.barclaycard.co.uk/personal/credit-cards/avios",
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "hsbc-premier-world-elite",
+    "issuer": "HSBC",
+    "product": "Premier World Elite",
+    "market": "uk",
+    "network": "Mastercard",
+    "category": "Premium travel",
+    "url": "https://www.hsbc.co.uk/credit-cards/products/premier-world-elite/",
+    "sourceType": "issuer"
+  }
+]

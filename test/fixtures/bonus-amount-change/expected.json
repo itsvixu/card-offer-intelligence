@@ -1,0 +1,11 @@
+{
+  "sourceId": "chase-csp",
+  "selector": ".welcome-offer-copy",
+  "description": "§11 case 1 — pure bonus-amount change (75,000 → 100,000 points) with byte-identical surrounding copy. The exact scenario that motivated the spec; no change-indicating language anywhere on the page.",
+  "expected": {
+    "classification": "CHANGED",
+    "changedFields": ["bonusAmount"],
+    "previous": { "bonusAmount": 75000 },
+    "current": { "bonusAmount": 100000 }
+  }
+}

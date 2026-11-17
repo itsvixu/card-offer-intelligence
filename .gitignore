@@ -1,0 +1,12 @@
+node_modules/
+output/
+.DS_Store
+
+# The real store (data/snapshots.sqlite + data/captures/) IS committed — the
+# scheduled workflow commits it back after every scan. Generated demo and
+# fixture stores are not.
+data/demo/
+data/fixtures/
+data/demo.sqlite
+site/
+.claude/

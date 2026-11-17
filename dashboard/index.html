@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Card Offer Intelligence</title>
+  <meta name="description" content="What competitor credit card offers look like today, and what changed since the last scan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-banner" id="demoBanner" hidden>
+    <strong>Demo data.</strong> Cards, offers and screenshots are from a real scan. The change history is simulated to show how changes appear.<span id="liveLink"></span>
+  </div>
+
+  <header class="top">
+    <a class="brand" href="#changes" aria-label="Card Offer Intelligence, home">
+      <svg class="mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="1.5" y="6" width="21" height="14" rx="3"/><rect x="5.5" y="10" width="21" height="14" rx="3"/></svg>
+      <span>Card Offer Intelligence</span>
+    </a>
+    <div class="top-right">
+      <a class="link top-link" id="caseStudyLink" href="case-study.html" hidden>Case study</a>
+      <div class="segmented" role="group" aria-label="Market" id="marketControl"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="lede" aria-live="polite">
+      <p class="eyebrow" id="scanStatus">Loading the latest scan…</p>
+      <h1 id="headline">&nbsp;</h1>
+      <p class="sub" id="subhead"></p>
+      <dl class="stats" id="stats"></dl>
+    </section>
+
+    <nav class="tabs" aria-label="Views" id="tabs"></nav>
+
+    <section id="view" class="view"></section>
+  </main>
+
+  <footer class="foot">
+    <div>
+      <h2>How this works</h2>
+      <p>Twice a week each card's public page is opened in a browser, exactly as a customer would see it. The welcome offer is read into four facts — bonus, spend required, time to earn, annual fee — and compared with the last scan field by field, so a change is caught even when the page's wording stays the same. A screenshot is kept whenever something moves.</p>
+    </div>
+    <div>
+      <h2>What it will not do</h2>
+      <p>It never guesses. If a page cannot be read with confidence it is listed under <a href="#attention">Needs a look</a>, not reported as changed or unchanged. Sites that disallow automated access in robots.txt are not fetched.</p>
+    </div>
+  </footer>
+
+  <dialog class="sheet" id="sheet" aria-labelledby="sheetTitle"></dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

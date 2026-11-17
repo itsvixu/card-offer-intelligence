@@ -1,0 +1,10 @@
+{
+  "sourceId": "boa-premium-rewards",
+  "selector": ".offer-details",
+  "description": "§10 edge case — issuer redesigned the page and the configured offer selector no longer matches anything, even though an (unchanged) offer still exists on the page. Must flag NEEDS_REVIEW with a stale-selector note, never NO_CHANGE or DISCONTINUED.",
+  "expected": {
+    "classification": "NEEDS_REVIEW",
+    "changedFields": [],
+    "notesInclude": "selector may be stale"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "sourceId": "discover-it-cashback",
+  "selector": ".cashback-match-promo",
+  "description": "§5.2/§5.3 — non-standard offer the regex pass can detect but not quantify (Discover's Cashback Match, no fixed number). Parser confidence is low on both scans, so even though the values 'match', it must be NEEDS_REVIEW — never a silent NO_CHANGE when we can't confirm a like-for-like comparison.",
+  "expected": {
+    "classification": "NEEDS_REVIEW",
+    "changedFields": []
+  }
+}

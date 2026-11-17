@@ -1,0 +1,44 @@
+[
+  {
+    "sourceId": "chase-csp",
+    "issuer": "Chase",
+    "product": "Sapphire Preferred",
+    "market": "us",
+    "network": "Visa",
+    "category": "Travel",
+    "valueProp": "Flexible travel points with strong transfer partners",
+    "offerHeadline": "Earn 100,000 bonus points",
+    "url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+    "offerSelector": ".welcome-offer-copy",
+    "requiresBrowser": false,
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "ba-amex-premium-plus",
+    "issuer": "American Express",
+    "product": "BA Premium Plus",
+    "market": "eu",
+    "network": "American Express",
+    "category": "Travel",
+    "valueProp": "Avios earning card co-branded with British Airways",
+    "offerHeadline": "Earn bonus Avios on signup",
+    "url": "https://www.americanexpress.com/uk/credit-cards/bapp-card/",
+    "offerSelector": ".offer-copy",
+    "requiresBrowser": true,
+    "sourceType": "issuer"
+  },
+  {
+    "sourceId": "nerdwallet-chase-csp",
+    "issuer": "Chase",
+    "product": "Sapphire Preferred",
+    "market": "us",
+    "network": "Visa",
+    "category": "Travel",
+    "valueProp": "Flexible travel points with strong transfer partners",
+    "offerHeadline": "Earn 100,000 bonus points",
+    "url": "https://www.nerdwallet.com/reviews/credit-cards/chase-sapphire-preferred",
+    "offerSelector": "[data-testid=\"offer-copy\"]",
+    "requiresBrowser": false,
+    "sourceType": "affiliate"
+  }
+]

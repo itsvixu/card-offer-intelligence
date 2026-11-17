@@ -1,0 +1,10 @@
+{
+  "sourceId": "chase-csr",
+  "selector": ".welcome-offer-copy",
+  "description": "§5.3 row 1 — no previous snapshot exists for this source (no before.html): first time seen → NEW, with the full parsed field set recorded as `current`.",
+  "expected": {
+    "classification": "NEW",
+    "changedFields": [],
+    "current": { "bonusAmount": 100000, "spendRequirement": 5000, "spendWindowDays": 90, "annualFee": 795 }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "competitor-offer-monitor",
+  "version": "0.1.0",
+  "description": "Card Offer Intelligence \u2014 scans competitor credit card pages twice a week, detects offer changes field by field, screenshots each offer, and serves a dashboard of what changed.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node run-scan.js && node server.js",
+    "scan": "node run-scan.js",
+    "dashboard": "node server.js",
+    "demo": "node scripts/seed-demo.js && node server.js --demo",
+    "test": "node --test",
+    "scan:fixtures": "node run-scan.js --config config/sources.fixtures.json --db data/fixtures/snapshots.sqlite --out output/fixtures-report.md --out-json output/fixtures-report.json",
+    "site": "node scripts/build-site.js"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}
