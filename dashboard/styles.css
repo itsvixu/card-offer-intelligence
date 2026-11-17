@@ -292,7 +292,9 @@ blockquote { margin: 0; padding: 14px 18px; border-left: 3px solid var(--accent)
   .foot { grid-template-columns: 1fr; gap: 24px; }
   .top { padding-block: 14px; }
   .brand span { font-size: 15px; }
-  .top-link { display: none; }
+  .top-right { gap: 12px; }
+  .top-link { font-size: 13px; white-space: nowrap; }
+  .brand span { display: none; }
   .segmented button { padding: 6px 11px; font-size: 13px; }
   .delta > div { grid-template-columns: 1fr; gap: 2px; }
   .stats { grid-template-columns: 1fr; }

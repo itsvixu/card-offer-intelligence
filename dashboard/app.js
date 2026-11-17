@@ -141,7 +141,11 @@ function renderChrome() {
   $('demoBanner').hidden = !state.data.demo;
   $('liveLink').innerHTML = links.live ? ` <a href="${esc(links.live)}">View live data →</a>` : '';
   $('caseStudyLink').hidden = !links.caseStudy;
-  if (links.caseStudy) $('caseStudyLink').href = links.caseStudy;
+  $('footCaseStudy').hidden = !links.caseStudy;
+  if (links.caseStudy) {
+    $('caseStudyLink').href = links.caseStudy;
+    $('footCaseStudy').querySelector('a').href = links.caseStudy;
+  }
   const markets = ['all', ...new Set(state.data.cards.map((c) => c.market))];
   $('marketControl').innerHTML = markets
     .map((m) => `<button type="button" data-market="${m}" aria-pressed="${state.market === m}">${esc(m === 'all' && narrow.matches ? 'All' : MARKETS[m] ?? m)}</button>`)
