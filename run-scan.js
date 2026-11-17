@@ -96,6 +96,11 @@ async function main() {
       const { createBrowserFetcher } = await import('./src/browser.js');
       browser = await createBrowserFetcher();
     }
+    const first = await browser.fetch(url, fetchOpts);
+    // One retry for a slow page load: a single timeout is usually a blip, and
+    // otherwise costs the card a whole scan cycle.
+    if (first.ok || !/timeout/i.test(first.error ?? '')) return first;
+    await new Promise((r) => setTimeout(r, 5000));
     return browser.fetch(url, fetchOpts);
   };
 
