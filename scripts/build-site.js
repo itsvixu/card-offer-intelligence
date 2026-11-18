@@ -58,7 +58,12 @@ writePage(
 );
 
 // Case study and its images
-cpSync(join(ROOT, 'dashboard/case-study.html'), join(OUT, 'case-study.html'));
+// In the source file the images are ../docs/..., so the page also opens from
+// disk and from the local server; in the built site docs/ sits beside it.
+writeFileSync(
+  join(OUT, 'case-study.html'),
+  readFileSync(join(ROOT, 'dashboard/case-study.html'), 'utf8').replaceAll('src="../docs/', 'src="docs/')
+);
 cpSync(join(ROOT, 'docs'), join(OUT, 'docs'), { recursive: true });
 writeFileSync(join(OUT, '.nojekyll'), '');
 
