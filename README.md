@@ -12,7 +12,9 @@ dashboard shows what changed and what each card's offer is today.
 ## The problem
 
 My team needed to know what competitors were offering new cardholders. We gathered it
-by hand, it took a lot of time, and a person had to check every figure.
+by hand, it took a lot of time, and a person had to check every figure. I first built a
+working prototype of this at Expedia in 2025. Internal changes and reorganisations kept
+delaying it, so I rebuilt it in 2026.
 
 The spec started from the idea that issuers often change only the amount and leave
 every other word on the page as it was. An alert for changed wording would miss those
