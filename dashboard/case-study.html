@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Card Offer Intelligence · Case study</title>
-  <meta name="description" content="How competitor credit card offer tracking went from a manual, verify-everything process to a twice-weekly automated scan with evidence for every change.">
+  <meta name="description" content="How tracking competitor credit card offers went from a manual process to a twice-weekly scan with a screenshot for every change.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -78,153 +78,126 @@
 
     <main>
       <section class="hero">
-        <p class="eyebrow">Case study · Competitive intelligence tooling</p>
-        <h1>From checking every number by hand to reviewing only the exceptions</h1>
-        <p class="sub">The team tracked competitor credit card offers manually, and every figure needed a person to find it, record it and check it. I redesigned the process around one finding: issuers change the numbers, not the words.</p>
+        <p class="eyebrow">Case study</p>
+        <h1>Tracking competitor credit card offers</h1>
+        <p class="sub">We needed to know what competitors were offering new cardholders. We gathered it by hand, and a person checked every figure. I built a scanner that finds and compares the offers, and a dashboard that shows each change next to a screenshot of the page.</p>
         <div class="meta-row">
-          <div><b>Scope</b>Research, product definition, interaction design, working build</div>
+          <div><b>My part</b>I wrote the spec, designed the dashboard and directed the build</div>
           <div><b>Markets</b>US and UK</div>
-          <div><b>Built with</b>Playwright, Node.js, SQLite, GitHub Actions</div>
+          <div><b>Built with</b>Claude Code, Playwright, Node.js, SQLite and GitHub Actions</div>
         </div>
         <div class="numbers">
-          <div><strong>14</strong><span>competitor card pages read automatically, twice a week</span></div>
-          <div><strong>~2 min</strong><span>for a full scan, including a screenshot of every page that changed</span></div>
-          <div><strong>4 of 6</strong><span>hand-researched offers were already out of date when the first automated scan ran</span></div>
+          <div><strong>14</strong><span>card pages read twice a week</span></div>
+          <div><strong>About 2 min</strong><span>for a full scan on my machine</span></div>
+          <div><strong>4 of 6</strong><span>cards in both the July data and the first scan show a different offer or figure on the issuer's page</span></div>
         </div>
       </section>
 
       <section class="block">
-        <p class="kicker">Where the team started</p>
-        <h2>A process built on people checking pages</h2>
+        <p class="kicker">Where we started</p>
+        <h2>Offers gathered by hand</h2>
         <div class="prose">
-          <p>Marketing, product and design needed to know what competitors offered new cardholders: the welcome bonus, how much a customer must spend to earn it, how long they have, and the annual fee. They also wanted the creative each issuer used to sell it.</p>
-          <p>All of that was gathered by hand. It took a lot of time, and <strong>every step relied on a person to verify it</strong>, because a single wrong digit in a bonus or a fee makes a competitive comparison worthless.</p>
+          <p>The four facts we cared about on each card were the welcome bonus, the spend needed to earn it, the time allowed and the annual fee. We also wanted to see the creative each issuer used to sell the offer.</p>
+          <p>We found all of this by hand. It took a lot of time, and every figure needed a person to check it, because one wrong digit in a bonus or a fee makes a comparison worthless. At 14 cards and four facts each, that is 56 figures to keep right.</p>
         </div>
-        <ol class="steps">
-          <li><div><b>Visit each issuer's card page</b><span>One by one, across US and UK issuers, and comparison sites as a cross-check.</span><br><span class="check">Human check</span></div></li>
-          <li><div><b>Find the welcome offer and read the terms</b><span>Often split across a headline, the body copy and the footnotes.</span><br><span class="check">Human check</span></div></li>
-          <li><div><b>Transcribe four figures into the dataset</b><span>Bonus, spend required, time to earn and annual fee: 56 numbers across 14 cards, every cycle.</span><br><span class="check">Human check</span></div></li>
-          <li><div><b>Compare against last time to spot changes</b><span>From memory or the previous spreadsheet. A bonus moving from 60,000 to 75,000 points looks identical at a glance.</span><br><span class="check">Human check</span></div></li>
-          <li><div><b>Screenshot the creative and file it</b><span>Then paste image links into the dashboard so the design team could see them.</span><br><span class="check">Human check</span></div></li>
-          <li><div><b>Write up the week's changes</b><span>Compiled into a newsletter for stakeholders.</span><br><span class="check">Human check</span></div></li>
-        </ol>
       </section>
 
       <section class="block">
         <p class="kicker">Phase 1</p>
-        <h2>A good-looking dashboard that still depended on manual input</h2>
+        <h2>A dashboard on top of the manual work</h2>
         <div class="prose">
-          <p>The first version gave the data a home: a filterable table, a creative board and a newsletter builder. It made the information easier to read, but it did not reduce the work behind it. Every row was still researched by hand, some rows were placeholders, and images arrived only when someone pasted links into a bulk-import box.</p>
+          <p>The first dashboard gave us somewhere to look at the data. It had a table and a creative board, and it could draft the weekly newsletter for senior leaders. It didn't reduce the work behind it. Every row was still researched by hand, and five of the 21 rows were placeholders labelled as illustrative. Creative only appeared when someone found an image and pasted its link into a bulk-import box.</p>
         </div>
         <figure class="wide">
           <img src="../docs/before-dashboard.jpg" alt="The Phase 1 dashboard: a table of card offers labelled as a prototype with a sample dataset">
-          <figcaption>Phase 1. The data was hand-researched and dated by its own footer: "as of July 2026".</figcaption>
+          <figcaption>The first dashboard. Its own footer dated the data to July 2026.</figcaption>
         </figure>
         <div class="pair">
           <figure>
             <img src="../docs/before-board.jpg" alt="The Phase 1 creative board, where every card shows No capture yet">
-            <figcaption>The creative board stayed empty until someone found and pasted image links.</figcaption>
+            <figcaption>The creative board stayed empty until someone pasted image links.</figcaption>
           </figure>
           <figure>
             <img src="../docs/before-bulk-import.jpg" alt="The Phase 1 bulk import dialog asking for one keyword and image URL per line">
-            <figcaption>Bulk import: one more manual hand-off between a person and the tool.</figcaption>
+            <figcaption>The bulk-import box, which was one more manual step.</figcaption>
           </figure>
         </div>
       </section>
 
       <section class="block">
-        <p class="kicker">The cost of manual data</p>
-        <h2>By the time it was read, it was already wrong</h2>
+        <p class="kicker">What the first scan found</p>
+        <h2>The July data and the live pages</h2>
         <div class="prose">
-          <p>When the automated scanner first ran in November, I compared it with the hand-researched data from July. Of the six cards both covered, four no longer matched the issuer's live page. None of these changes came with new marketing language, so nothing on the page signalled that anything had moved.</p>
+          <p>When the scanner first ran in November I compared it with the July data. Six cards were in both, and four of them showed a different offer or figure on the issuer's own page.</p>
         </div>
         <div class="stale table-wrap">
           <table>
-            <thead><tr><th>Card</th><th>Hand-researched, July</th><th>Live page, November</th></tr></thead>
+            <thead><tr><th>Card</th><th>July dataset</th><th>Live page, November</th></tr></thead>
             <tbody>
               <tr><td>Chase Sapphire Preferred</td><td class="was">100,000 points</td><td><span class="now">75,000 points</span></td></tr>
               <tr><td>American Express Platinum</td><td class="was">$695 annual fee</td><td><span class="now">$895 annual fee</span></td></tr>
               <tr><td>Wells Fargo Active Cash</td><td class="was">$200 bonus</td><td><span class="now">$100 bonus</span></td></tr>
-              <tr><td>Discover it Cash Back</td><td class="was">Cashback Match</td><td><span class="now">$200 bonus</span></td></tr>
+              <tr><td>Discover it Cash Back</td><td class="was">Led with Cashback Match</td><td><span class="now">Leads with a $200 bonus</span></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="pull">Issuers change the numbers, not the words. So the system had to compare what an offer means, not what the page says.</p>
+        <div class="prose" style="margin-top:28px">
+          <p>The spec started from the idea that issuers often change only the amount and leave every other word on the page as it was. So the scanner compares the figures themselves.</p>
+        </div>
       </section>
 
       <section class="block">
-        <p class="kicker">The shift</p>
-        <h2>People verify the exceptions, not every number</h2>
+        <p class="kicker">The scanner</p>
+        <h2>A scan twice a week</h2>
         <div class="prose">
-          <p>Twice a week, each card page is opened in a real browser, exactly as a customer would see it. The offer is read into the same four facts the team used to transcribe, and compared field by field with the last scan. A page can be redesigned from top to bottom without raising a false alarm, while a change to a single number is always caught.</p>
-          <p>Human judgement didn't go away; it moved. Instead of re-checking 56 numbers every cycle, people review the few pages the system could not read with confidence, and every change arrives with the evidence needed to confirm it in seconds.</p>
-        </div>
-        <div class="compare">
-          <div>
-            <h3>Before</h3>
-            <ul>
-              <li>A person visits every page, every cycle</li>
-              <li>Every figure transcribed and checked by hand</li>
-              <li>Changes spotted by memory</li>
-              <li>Screenshots taken and filed separately</li>
-              <li>Data goes stale between checks</li>
-            </ul>
-          </div>
-          <div class="after">
-            <h3>After</h3>
-            <ul>
-              <li>Pages scanned on a schedule, unattended</li>
-              <li>Figures read automatically and compared field by field</li>
-              <li>Changes stated in plain language, with before and after values</li>
-              <li>A screenshot kept automatically whenever something moves</li>
-              <li>People review only what the system flags as uncertain</li>
-            </ul>
-          </div>
+          <p>Twice a week the scanner opens each card page in a real browser, as a customer would see it. It reads the welcome offer into the four facts and compares them with the last scan, one at a time. A redesigned page with the same figures isn't flagged. A change to a single figure is, and the scanner keeps a screenshot of that page.</p>
+          <p>I still want a person checking what it finds. The scanner does the looking and the comparing. Each change in the dashboard sits next to the screenshot and the issuer's own wording, so checking it takes a few seconds. Pages it can't read with confidence go to a separate list and aren't reported as changed or unchanged.</p>
+          <p>The first version needed a CSS selector for every page, and those broke whenever an issuer redesigned. The current one finds the offer by reading the page in order, so a new card needs only a link.</p>
         </div>
       </section>
 
       <section class="block">
-        <p class="kicker">Design principles</p>
-        <h2>Decisions that shaped the experience</h2>
+        <p class="kicker">The dashboard</p>
+        <h2>What I designed</h2>
         <div class="principles">
-          <div><h3>Lead with change</h3><p>The first screen answers the question people come with: what moved since I last looked? A quiet week says so plainly, instead of showing a full table to scan for differences.</p></div>
-          <div><h3>Evidence over assertion</h3><p>Every change sits next to a screenshot of the live page and the issuer's own wording. Anyone can check a claim without leaving the dashboard, which is what earns trust in automated data.</p></div>
-          <div><h3>Write for people, not the pipeline</h3><p>The system compares fields like bonusAmount; people read "Welcome bonus cut from $200 to $100". The email report and the dashboard share one source for this wording, so they never disagree.</p></div>
-          <div><h3>Direction without judgement</h3><p>A competitor raising a bonus is information, not good or bad news. Changes are marked up or down, never coloured red or green.</p></div>
-          <div><h3>Be honest about uncertainty</h3><p>If a page can't be read with confidence, it goes to a short review queue with the reason. It is never reported as changed or unchanged. Personalised "as high as" offers are labelled as ceilings.</p></div>
-          <div><h3>Nothing to maintain per site</h3><p>Adding a card means adding a link. The system finds the offer itself, so a redesign of an issuer's page doesn't create work for the team.</p></div>
+          <div><h3>The first screen</h3><p>It opens on what changed since the last scan. A quiet week says so, and the full list of cards is one tab away.</p></div>
+          <div><h3>Screenshots beside the numbers</h3><p>Each change shows the before and after values next to a screenshot of the live page, with the issuer's wording underneath.</p></div>
+          <div><h3>Plain wording</h3><p>The scanner compares fields with names like bonusAmount. The dashboard and the emailed report both say "Welcome bonus cut from $200 to $100", and both take that sentence from the same piece of code.</p></div>
+          <div><h3>Direction of change</h3><p>Changes are marked with an arrow up or down. I left out red and green because a competitor raising a bonus isn't good or bad news in itself.</p></div>
         </div>
       </section>
 
       <section class="block">
         <p class="kicker">The result</p>
-        <h2>A feed of what changed, with the proof attached</h2>
+        <h2>What it looks like now</h2>
         <div class="shots">
           <img src="../docs/changes.jpg" alt="The change feed: each change shows the card, a plain-language headline, before and after values, and a screenshot">
           <div class="phone"><img src="../docs/mobile.jpg" alt="The change feed on a phone"></div>
         </div>
+        <p class="caption" style="margin-top:12px;max-width:70ch">This is the demo. Everything in it comes from a real scan except the change history, which is simulated so the feed has something in it. The live dashboard shows no changes yet.</p>
         <div class="pair">
           <figure>
             <img src="../docs/cards.jpg" alt="A gallery of every tracked card with its current offer and a screenshot of its page">
-            <figcaption>Every card's current offer at a glance, with a screenshot of the live page instead of an empty placeholder.</figcaption>
+            <figcaption>Every card with its current offer and a screenshot of its page.</figcaption>
           </figure>
           <figure>
             <img src="../docs/card-detail.jpg" alt="A card's detail panel with its screenshot, current offer, the page's wording and its history">
-            <figcaption>The card detail: screenshot, the four facts, the issuer's wording, and a timeline of every change.</figcaption>
+            <figcaption>A card's detail panel, with its history.</figcaption>
           </figure>
         </div>
         <figure class="wide">
           <img src="../docs/capture-amex-gold.jpg" alt="An automatic screenshot of the American Express Gold Card page showing its welcome offer">
-          <figcaption>A capture taken by the scanner. This is the creative the design team used to screenshot and file by hand.</figcaption>
+          <figcaption>A screenshot taken by the scanner. In the first dashboard someone had to find and paste a link for each one.</figcaption>
         </figure>
       </section>
 
       <section class="block">
         <p class="kicker">Limits and next steps</p>
-        <h2>What it doesn't do, and where it goes next</h2>
+        <h2>What it doesn't cover yet</h2>
         <div class="prose">
-          <p>It reads public offers only; personalised offers behind a login or eligibility check are out of reach. Some sites block automated access, so those were left out rather than worked around, and robots.txt is always respected.</p>
-          <p>Next: tracking offer creative across paid social and display, where most new campaigns appear first, and alerting the people who own each competitor relationship when their cards move.</p>
+          <p>It reads public offers. Personalised offers behind a login or an eligibility check are out of reach, and where a page says "as high as" the dashboard labels the figure as a ceiling. Bank of America and NerdWallet both turned automated requests away, so I left them out. The scanner checks each site's robots.txt before it fetches a page.</p>
+          <p>The first dashboard could draft the weekly newsletter. This one can't yet, and the emailed report covers part of that once email is switched on.</p>
+          <p>Next I'd like to track offer creative across paid social and display, where most new campaigns appear first, and to alert the people who own each competitor relationship when their cards move. The spec left paid social and display out on purpose because they need a different kind of tool, so that would be a separate piece of work.</p>
         </div>
       </section>
 

@@ -1,9 +1,9 @@
 # Card Offer Intelligence
 
-Twice a week, this opens 14 competitor credit card pages in a real browser, reads each
-welcome offer, and compares it with the last scan. When anything moves, it records
-what changed in plain language with a screenshot of the page as a customer saw it.
-The dashboard shows what changed, when, and what every card's offer looks like today.
+Twice a week this opens 14 competitor credit card pages in a real browser and reads
+each welcome offer. It compares the offer with the last scan and, when anything has
+moved, records the change in plain language with a screenshot of the page. The
+dashboard shows what changed and what each card's offer is today.
 
 **[Live dashboard](https://itsvixu.github.io/card-offer-intelligence/) · [Demo with change history](https://itsvixu.github.io/card-offer-intelligence/demo/) · [Case study](https://itsvixu.github.io/card-offer-intelligence/case-study.html)**
 
@@ -11,47 +11,44 @@ The dashboard shows what changed, when, and what every card's offer looks like t
 
 ## The problem
 
-Card marketing and design teams track competitors by hand. Someone visits issuer pages,
-screenshots them, and pastes numbers into a spreadsheet. Checks are irregular and
-evidence gets lost.
+My team needed to know what competitors were offering new cardholders. We gathered it
+by hand, it took a lot of time, and a person had to check every figure.
 
-The obvious automation, alerting when a page's copy changes, misses the changes that
-matter most. When Chase moves a welcome bonus from 60,000 to 75,000 points, nothing on
-the page says "new" or "updated". The number changes and every other word stays the
-same.
+The spec started from the idea that issuers often change only the amount and leave
+every other word on the page as it was. An alert for changed wording would miss those
+changes, so the scanner compares figures. When I first ran it in November, four of the
+six cards that were also in our July data showed a different offer or figure on the
+issuer's page. Chase Sapphire Preferred was 100,000 points in July and 75,000 on the
+page.
 
-So the system works on **meaning, not wording**. Each offer is read into four facts:
-welcome bonus, spend required, time to earn, and annual fee. Those facts are compared
-field by field. A page can be redesigned top to bottom without raising an alert, while
-a $2,000 change to a spend requirement is always caught.
+Each offer is read into four facts: the welcome bonus, the spend required, the time to
+earn it and the annual fee. A redesigned page with the same figures isn't flagged. A
+$2,000 change to a spend requirement is.
 
 ## Design decisions
 
-**Lead with change, not inventory.** The first screen answers the one question people
-open it with: what moved since I last looked? The full catalogue is one tab away. A
-quiet week says so plainly rather than showing an empty table.
+The first screen shows what changed since the last scan. The full list of cards is one
+tab away, and a quiet week says so.
 
-**Evidence over assertion.** Every change shows the before and after values next to a
-screenshot of the live page, and every card quotes the page's own wording. A reader can
-check any claim without leaving the dashboard.
+Each change sits beside a screenshot of the live page, with the issuer's own wording
+underneath, so checking it takes a few seconds. I still want a person checking what
+the scanner finds.
 
-**Plain language.** The pipeline compares field names like `bonusAmount`. People read
-"Welcome bonus raised from 60,000 to 75,000 points". The email report and the dashboard
-share one description module, so they always use the same words.
+The scanner compares fields with names like `bonusAmount`. The dashboard and the
+emailed report both say "Welcome bonus raised from 60,000 to 75,000 points", and they
+get that sentence from one shared module.
 
-**Direction without judgement.** A competitor raising a bonus is information, not good
-or bad news, so changes are marked ↑ or ↓ and never coloured red or green.
+Changes are marked with an arrow up or down. I left out red and green because a
+competitor raising a bonus isn't good or bad news in itself.
 
-**Honest uncertainty.** If a page can't be read with confidence, the card goes to
-*Needs a look* with the reason. It is never reported as changed or unchanged. A
-targeted offer ("as high as 100,000 points") is labelled as a ceiling, not shown as a
-guaranteed amount.
+If a page can't be read with confidence, the card goes to *Needs a look* with the
+reason and isn't reported as changed or unchanged. Where an offer says "as high as
+100,000 points", the dashboard labels it as a ceiling.
 
-**Nothing to maintain per site.** The first version needed a CSS selector for every
-page, and those break with every redesign. Rendered issuer pages share a more durable
-pattern: in reading order, the first statement that pairs a bonus with a spend
-requirement is the card's own offer. Later ones are cross-sells. Adding a card now
-means adding a URL.
+The first version of the scanner needed a CSS selector for every page, and those broke
+when an issuer redesigned. The current one reads the page in order and takes the first
+statement that pairs a bonus with a spend requirement as the card's own offer. Later
+ones are usually other cards. A new card needs only a URL.
 
 ![All cards](docs/cards.jpg)
 
@@ -139,11 +136,10 @@ robots.txt check → render page (Playwright) → find the offer → parse 4 fac
 
 ## Limits
 
-- **Public offers only.** Personalised offers behind a login or an eligibility check
-  are out of reach. Pages that show a ceiling are labelled as targeted.
-- **Some sites block automation.** Bank of America returned 403 and NerdWallet blocks
-  bots, so neither is tracked. A blocked or redirected page goes to *Needs a look* and is
-  never reported as a withdrawn offer.
-- **Screenshots are taken at a 1440 px desktop width**, the top of the page only.
-- **Storage grows with change**, not with time: one ~150 KB image per card when its
-  offer moves.
+- It reads public offers. Personalised offers behind a login or an eligibility check
+  are out of reach.
+- Bank of America returned a 403 and NerdWallet turns automated requests away, so
+  neither is tracked. A blocked or redirected page goes to *Needs a look* and is never
+  reported as a withdrawn offer.
+- Screenshots are taken at a 1440 px desktop width and show the top of the page.
+- Storage grows by about 150 KB each time an offer changes, for the new screenshot.
